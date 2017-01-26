@@ -1,0 +1,136 @@
+/*@media screen and (max-width: 480px)
+{
+	body{
+		width: 100%;
+}
+.carou_slider{
+	margin-top: 16%;
+
+}
+.over_lay{
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	left: 0px;
+	top: 0px;
+	background-color: rgba(27, 27, 27, .7);
+	z-index: 10;
+}
+
+.over_lay .text{
+	font-weight: bold;
+	color: white;
+	font-size:15px;	
+}
+
+#slider_div{
+	width: 400px;
+	height: 90px;
+	background-color: rgba(27, 27, 27, .5);
+	
+}
+
+ #slider_search .control{
+	display: inline;
+	width: 150px;
+	height: 30px;
+	margin-top: 2.5%;
+	margin-right: 7px;
+
+}
+#slider_search .but{
+	width: 80px;
+	height: 30px;
+	margin-top: 10px;	
+}
+#event-div{
+	margin-top: 0%;
+	height: 750px;
+	width: 100%;
+	background-color: #e4e4e4;
+	
+
+}
+#event{
+	text-align: center;
+	font-weight: bold;
+	font-size: 20px;
+	opacity: 0.8;
+}
+
+
+.grid-row .thumbnail{
+	width: 220px;
+	height: 120px;
+	margin: 15px;
+	border: 0px;
+	padding: 0px;
+	position: relative;
+	margin-top: 5px;
+}
+
+.grid-text{
+	color: white;
+	font-size: 23px;
+	
+	box-shadow: 2px;
+	margin-top: 30%;
+}
+#event-div .but{
+	margin-top: 15px;
+	width: 240px;
+	height: 50px;
+	
+}
+#event-div .but:hover{
+	background-color: white;
+}
+
+}
+
+@media screen and (max-width: 1200px)
+{
+	#event-div{
+	margin-top: 0%;
+	height: 900px;
+	width: 100%;
+	background-color: #e4e4e4;
+	
+
+}
+.grid-row .thumbnail{
+	width: 320px;
+	height: 220px;
+	margin: 15px;
+	border: 0px;
+	padding: 0px;
+	position: relative;
+	margin-top: 5px;
+}
+.background{
+	background: url(people.jpeg);
+	width: 100%;
+	height: 301px;
+}
+
+#latest-events{
+	height: 550px;
+	width: 100%;
+}
+#latest-events .thumbnail{
+
+	width: 495px;
+	height: 220px;
+	margin-left: 25%;
+}
+}
+
+@media screen and (max-width: 1300px)
+{
+	#latest-events .thumbnail{
+
+	width: 450px;
+	height: 220px;
+	
+}
+}*/

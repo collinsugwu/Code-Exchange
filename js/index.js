@@ -1,0 +1,46 @@
+
+function validate() {
+		var password = document.myform.password.value;
+		var com_password = document.myform.com_password.value;
+		var checkbox = document.myform.checkbox.value;
+
+		if (password !== com_password ) {
+			alert("THE PASSOWRDS DO NOT MATCH")
+		}
+		
+	
+
+	}
+
+	function validatePhone () {
+		var phone = document.myform.tel.value;
+		var password = document.myform.password.value;
+		 if(password.length < 3 ) {
+		 	document.getElementById("passworderror").innerHTML = "your password is weak";
+		 }else if (password.length > 6){
+		 	document.getElementById("passworderror").innerHTML = "STRONG PASWORD";
+		 }
+
+		if(isNaN(phone)){
+			document.getElementById("phoneerror").innerHTML = "Please enter numbers only";
+		}
+	}
+
+$(document).ready(function(){
+	$("#check").change(function(){
+		$("#submit").removeAttr("disabled");
+	})
+})
+
+// $(document).ready(function(){
+//  	if
+// 	($('.male').change()){
+
+//  		$('.female').attr("disabled", true);
+//  		$('.Both').attr("disabled", true);
+//  	}.change()){
+//  		$('.female').removeAttr("disabled");
+//  		$('.Both').removeAttr("disabled");
+//  	}
+//  })
+
