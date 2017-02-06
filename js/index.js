@@ -32,15 +32,23 @@ $(document).ready(function(){
 	})
 })
 
-// $(document).ready(function(){
-//  	if
-// 	($('.male').change()){
 
-//  		$('.female').attr("disabled", true);
-//  		$('.Both').attr("disabled", true);
-//  	}.change()){
-//  		$('.female').removeAttr("disabled");
-//  		$('.Both').removeAttr("disabled");
-//  	}
-//  })
+$(document).ready(function(){
+	$("#apply").click(function(){
+		$(this).attr("disable", true);
+	})
+})
+
+// document.getElementById("ruby").onclick = function () {
+//     location.href = "userpage.php";
+// };
+
+$("#to_teach a").on("click", function(){
+   $(".to_teach").find(".active").removeClass("active");
+   $(this).parent().addClass("active");
+});
+
+$(document).ready(function(){
+	$('.tabledash').show();
+})
 

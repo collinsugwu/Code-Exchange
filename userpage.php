@@ -3,14 +3,18 @@
 	$_firstname = $_SESSION['fname']; 
     $current_email = $_SESSION['email'];
 
-    
+    @$teach_id = $teach_row['id'];
 	
 	if (!$_firstname) {
 		header("location: login.php");
 	
 		
 	}else{
+		
+		
+
 }
+
 			
 			
 ?>
@@ -29,10 +33,9 @@
 			<!--events css-->
 			<link rel="stylesheet" type="text/css" href="css/events.css">
 			<!--alert css-->
-			<link rel="stylesheet" href="alert/dist/min/jquery.sweet-modal.min.css">
 
 				<!--alert js-->
-			<script src="alert/dist/min/jquery.sweet-modal.min.js"></script>
+			
 
 	</head>
 
@@ -40,7 +43,7 @@
 	<!--header-->
 				<header>
 					<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-						<div class="container-fluid">
+						<div class="container">
 							<!-- Brand and toggle get grouped for better mobile display -->
 							<div class="navbar-header navbar-left">
 								<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -74,13 +77,13 @@
 				</header>
 			
 				<nav class="navbar navbar-inverse">
-				  <div class="container-fluid">
+				  <div class="container">
 				    <div class="navbar-header">
 				     <span> SESSIONS</span>
 				    </div>
 
 				    <div class="navbar-header pull-right">
-				     <span><img src="image/Tonto.jpg"></span>
+				     
 				     </div>
 				    <form class="navbar-form navbar-left pull-right">
 				      <div class="input-group">
@@ -97,7 +100,7 @@
 			
 
 				<!--events-->
-				<div class="container-fluid events">
+				<div class="container events">
 					<div class="row">
 						<div class="col-md-3">
 							<div class="row c-events">
@@ -125,26 +128,55 @@
 										if(mysql_num_rows($sql) > 0 ){
 								
 								while($row = mysql_fetch_assoc($sql)){
-								?>
-							
+									$_SESSION['id'] = $teach_id;
+									 $teach_id = $_SESSION['id'];
+									$teach_id = $row['id'];
+									$topic = $row['topic'];
+									$fullname = ($row['fullname']);
+									$value = $row['venue'];
+									$date = $row['date'];
+									$time = $row['time'];
 
+							echo '
 								<div class="col-md-12 thumbnail L-events">
-										<h4><a href="#modal-id" data-toggle="modal"><?php echo $row['topic']; ?></a></h4>
-										<h5><?php echo $row['fullname']?> php developer works at switch</h5>
-										<h5>VENUE: <?php echo $row['venue'];?></h5>
-										<h5>DATE: <?php echo $row['date'] . "  TIME: ". $row['time'];?></h5>
-										<button type="button" class="btn btn-default but">APPLY</button>
+								<form method="POST" action="dashboard.php">
+								<span name="topic">
+								
+										<h4><a href="#modal-id" data-toggle="modal">'. $topic .'</a></h4>
+								</span>
+								<span name="fullname">
+								
+										<h5><b>'. strtoupper($fullname).'</b></h5>
+								</span>
+								<span name="venue">
+									
+										<h5>VENUE:'. $value.'</h5>
+								</span>
+								<span name="dete">
+									
+										<h5>DATE: '.$date ."  &nbsp; &nbsp; "."TIME:". $time .'</h5>
+								</span>
+								<span name="apply">
+										<input type="hidden" name="teach_id" value="'.$teach_id.'" />
+										<button type="submit" name="apply" href="" class="btn btn-default but" id="apply">APPLY</button>
+											
+								</span>
 									<span>
 										<ul>
 											<li><a href="facebook.com"><img src="img/facebook.png"></a></li>
 											<li><a href="twitter.com"><img src="img/twitter.png"></a></li>
 										</ul>
 									</span>
+									</form>
 								</div>
+							
 
-								<?php  
+								'	
+								?>	
+
+								<?php
 								}
-									}				
+								}		
 								?>
 									
 						
@@ -180,7 +212,7 @@
 							</span>
 							</div>
 						</div>	 
-						  <div role="tabpanel" class="tab-pane fade" id="messages">
+				 <div role="tabpanel" class="tab-pane fade" id="messages">
                     Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
                 </div>
 					</div>

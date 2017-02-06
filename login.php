@@ -1,6 +1,9 @@
 <?php
 require ('db.php');
-
+ @$_firstname = $_SESSION['fname'];
+if($_firstname){
+	header("location: userpage.php");
+}elseif(!$_firstname){
 
 if (isset($_POST['submit'])) {
 	$email=$_POST['email'];
@@ -46,7 +49,8 @@ if (isset($_POST['submit'])) {
 			
 	}else{
 			}
-		
+
+	}	
 ?>
 
 
@@ -69,7 +73,7 @@ if (isset($_POST['submit'])) {
 	<!--header-->
 			<header>
 					<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-						<div class="container-fluid">
+						<div class="container">
 							<!-- Brand and toggle get grouped for better mobile display -->
 							<div class="navbar-header navbar-left">
 								<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">

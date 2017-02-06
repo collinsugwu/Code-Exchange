@@ -1,3 +1,15 @@
+ <?php
+	require "db.php";
+ 	@$_firstname = $_SESSION['fname']; 
+    @$current_email = $_SESSION['email'];
+   if($_firstname){
+   	header("location: userpage.php");
+   }else{
+
+   }
+
+?> 
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -20,7 +32,7 @@
 	<!--header-->
 			<header>
 					<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-						<div class="container-fluid">
+						<div class="container">
 							<!-- Brand and toggle get grouped for better mobile display -->
 							<div class="navbar-header navbar-left">
 								<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -57,7 +69,7 @@
 					
 
 				<nav class="navbar navbar-inverse">
-				  <div class="container-fluid">
+				  <div class="container">
 				    <div class="navbar-header">
 				     <span> SESSIONS</span>
 				    </div>
@@ -95,23 +107,35 @@
 						<div class="col-md-9">
 							<div class="row tab-content">
 								<div role="tabpanel" class="tab-pane fade active in" id="allevents">
-								<div class="col-md-12 thumbnail L-events">
-							<h4><a href="#modal-id" data-toggle="modal">PHP TUTORIALS FOR BEGINERS</a></h4>
-							<h5>Ugwu Collins php developer works at switch</h5>
-							<h5>Venue: ccub, sabo yaba.</h5>
-							<h5>Date: 20th jan, 2017.  Time: 9am.</h5>
-							<a href="login.php"><button type="button" class="btn btn-default but">APPLY</button></a>
-							<span>
-								<ul>
-									<li><a href="facebook.com"><img src="img/facebook.png"></a></li>
-									<li><a href="twitter.com"><img src="img/twitter.png"></a></li>
-								</ul>
-							</span>
-
-						</div>
+							
+									<?php
+										$sql = mysql_query("SELECT * FROM `teach` ORDER BY `id` DESC");
+										if(mysql_num_rows($sql) > 0 ){
 								
+								while($row = mysql_fetch_assoc($sql)){
+								?>
+							
+
 								<div class="col-md-12 thumbnail L-events">
-							<h4><a ref="#modal-id" data-toggle="modal">CSS3 FOR BEGINERS</a></h4>
+										<h4><a href="#modal-id" data-toggle="modal"><?php echo $row['topic'];?></a></h4>
+										<h5><b><?php echo strtoupper($row['fullname']);?></b></h5>
+										<h5>VENUE: <?php echo $row['venue'];?></h5>
+										<h5>DATE: <?php echo $row['date']."  &nbsp; &nbsp; "."TIME:". $row['time'];?></h5>
+										<button type="button" class="btn btn-default but"><a href="login.php">APPLY</a></button>
+									<span>
+										<ul>
+											<li><a href="facebook.com"><img src="img/facebook.png"></a></li>
+											<li><a href="twitter.com"><img src="img/twitter.png"></a></li>
+										</ul>
+									</span>
+								</div>
+
+								<?php 
+								}
+									}				
+								?>	
+								<div class="col-md-12 thumbnail L-events">
+							<h4><a href="#modal-id" data-toggle="modal">CSS3 FOR BEGINERS</a></h4>
 							<h5>Ugwu Collins php developer works at switch</h5>
 							<h5>Venue: ccub, sabo yaba.</h5>
 							<h5>Date: 20th jan, 2017.  Time: 9am.</h5>
@@ -126,7 +150,7 @@
 
 
 								<div class="col-md-12 thumbnail L-events">
-							<h4><a ref="#modal-id" data-toggle="modal">RUBY FOR BEGINERS</a></h4>
+							<h4><a href="#modal-id" data-toggle="modal">RUBY FOR BEGINERS</a></h4>
 							<h5>Ugwu Collins php developer works at switch</h5>
 							<h5>Venue: ccub, sabo yaba.</h5>
 							<h5>Date: 20th jan, 2017.  Time: 9am.</h5>
@@ -139,12 +163,13 @@
 							</span>
 							</div>
 						</div>	
-						  <div role="tabpanel" class="tab-pane fade" id="messages">
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
-                </div>
-					</div>
+						  	<div role="tabpanel" class="tab-pane fade" id="messages">
+			                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
+			                </div>
+						</div>
 					</div>		
-					</div>
+				</div>
+
 					<div class="text-center">
 						<ul class="pagination">
 							<li><a href="#">&laquo;</a></li>

@@ -2,37 +2,26 @@
 	require ('db.php');
 	$_firstname = $_SESSION['fname'];
     $current_email = $_SESSION['email'];
-   
-
 
 	 if(!$_firstname){
 	 	header("location: login.php");
 	 }
-
 		else if(isset($_POST['submit'])){
-			$fullname = $_POST['fullname'];
-			$topic = $_POST['topic'];
-			$category =$_POST['category'];
-			$venue =$_POST['venue'];
-			$date =$_POST['date'];
-			$time =$_POST['time'];
-			$gender = $_POST['radio'];
-			$applicants =$_POST['applicants'];
-			$textarea =$_POST['textarea'];
+			$fullname = mysql_escape_string($_POST['fullname']);
+			$topic =mysql_escape_string($_POST['topic']);
+			$category =mysql_escape_string($_POST['category']);
+			$venue =mysql_escape_string($_POST['venue']);
+			$date = mysql_escape_string($_POST['date']);
+			$time =mysql_escape_string($_POST['time']);
+			$gender =mysql_escape_string($_POST['radio']);
+			$applicants =mysql_escape_string($_POST['applicants']);
+			$textarea =mysql_escape_string($_POST['textarea']);
 
-				$fullname = mysql_escape_string($fullname);
-				$topic = mysql_escape_string($topic);
-				$category = mysql_escape_string($category);
-				$venue = mysql_escape_string($venue);
-				$date = mysql_escape_string($date);
-				$time = mysql_escape_string($time);
-				$gender = mysql_escape_string($gender);
-				$applicants = mysql_escape_string($applicants);
-				$textarea = mysql_escape_string($textarea);
+			$sql = mysql_query("INSERT INTO `teach` (`id`, `fullname`, `topic`, `category`, `venue`, `date`, `time`, `gender`, `applicants`, `description`, `posted_by`) VALUES (NULL, '$fullname', '$topic', '$category', '$venue', '$date', '$time', '$gender', '$applicants', '$textarea', '$current_email')");
 
-			$sql = mysql_query("INSERT INTO `teach` (`id`, `fullname`, `topic`, `category`, `venue`, `date`, `time`, `gender`, `applicants`, `description`) VALUES (NULL, '$fullname', '$topic', '$category', '$venue', '$date', '$time', '$gender', '$applicants', '$textarea')");
+			$sqli = mysql_query("SELECT * FROM `teach` ORDER BY `id` DESC");
 
-			if($sql){
+			if(mysql_num_rows($sqli) > 0){
 					setcookie('fullname', $fullname, time()+300000000);
 					setcookie('topic', $topic, time()+300000000);
 					setcookie('category',$category, time()+300000000);
@@ -42,24 +31,18 @@
 					setcookie('gender', $gender, time()+300000000);
 					setcookie('applicants', $applicants, time()+300000000);
 					setcookie('textarea', $textarea, time()+300000000);
-
-					header("location: userpage.php");
-					
+					while($row = mysql_fetch_assoc($sqli))
+						{	$_SESSION['id'] = $row['id'];
+							 $teach_id = $_SESSION['id']; 
+									
+						  
+						header("Location: userpage.php");	
+						}	
 			}else{
 				die(mysql_error());
 			}
 		}
-		
-	
-	
-
-
-
-
-?>
-
-
-
+	?>
 
 
 <!DOCTYPE html>
@@ -81,7 +64,7 @@
 	<!--header-->
 			<header>
 					<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-						<div class="container-fluid">
+						<div class="container">
 							<!-- Brand and toggle get grouped for better mobile display -->
 							<div class="navbar-header navbar-left">
 								<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -105,7 +88,7 @@
 										<a href="dashboard.php"><b>DASHBOARD</b></a>
 									</li>
 									<li>
-										<a href="#"><b>LOG OUT</b></a>
+										<a href="logout.php"><b>LOG OUT</b></a>
 									</li>
 									
 								</ul>
@@ -115,12 +98,12 @@
 				</header>	
 
 				<nav class="navbar navbar-inverse">
-				  <div class="container-fluid">
+				  <div class="container">
 				    <div class="navbar-header">
 				     <span> TEACH A SKILL</span>
 				     </div>
 				     <div class="navbar-header pull-right">
-				     <span><img src="img/Tonto.jpg"></span>
+				     
 				     </div>
 				    <form class="navbar-form navbar-left pull-right">
 				      <div class="input-group">
@@ -188,6 +171,7 @@
 							
 								<button type="submit" class="btn btn-primary but" name="submit">Submit</button>
 							</form>
+							
 						</div>
 					</div>
 				</div>

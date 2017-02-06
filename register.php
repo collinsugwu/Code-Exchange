@@ -1,5 +1,9 @@
  <?php
 require ('db.php');
+ @$_firstname = $_SESSION['fname'];
+if($_firstname){
+	header("location: userpage.php");
+}
 if(isset($_POST['Submit'])){
 	$fname=$_POST['fname'];
 	$email=$_POST['email'];

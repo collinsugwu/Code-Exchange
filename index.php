@@ -1,3 +1,9 @@
+<?php
+	require ('db.php');
+	$_firstname = $_SESSION['fname'];
+	@ $current_email = $_SESSION['email'];
+    
+ ?>
 <!DOCTYPE html>
 	<html lang="en">
 		<head>
@@ -17,7 +23,7 @@
 			<div class="body_div">
 				<header>
 					<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-						<div class="container-fluid">
+						<div class="container">
 							<!-- Brand and toggle get grouped for better mobile display -->
 							<div class="navbar-header navbar-left">
 								<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -40,11 +46,25 @@
 									<li>
 										<a href="login.php"><b>TEACH</b></a>
 									</li>
+
 									<li>
-										<a href="login.php"><b>LOG IN</b></a>
+									<?php
+										if($current_email){
+										echo "<a href=\"logout.php\"><b>LOG OUT</b></a>";
+									}else{
+										echo "<a href=\"login.php\"><b>LOG IN</b></a>";
+									}
+									?>
 									</li>
+
 									<li>
-										<a href="register.php"><b>SIGN UP</b></a>
+									<?php
+										if($current_email){
+										
+										}else{
+										echo "<a href=\"register.php\"><b>SIGN UP</b></a>";
+										}
+										?>
 									</li>
 								</ul>
 							</div><!-- /.navbar-collapse -->
@@ -190,7 +210,7 @@
 							<h5>Ugwu Collins php developer works at switch</h5>
 							<h5>Venue: ccub, sabo yaba.</h5>
 							<h5>Date: 20th jan, 2017.  Time: 9am.</h5>
-							<button type="button" class="btn btn-default but">APPLY</button>
+							<a href="events.php"><button type="button" class="btn btn-default but">APPLY</button></a>
 							<span>
 								<ul>
 									<li><a href="facebook.com"><img src="img/facebook.png"></a></li>
@@ -204,7 +224,7 @@
 							<h5>Ugwu Collins php developer works at switch</h5>
 							<h5>Venue: ccub, sabo yaba.</h5>
 							<h5>Date: 20th jan, 2017.  Time: 9am.</h5>
-							<button type="button" class="btn btn-default but">APPLY</button>
+							<a href="events.php"><button type="button" class="btn btn-default but">APPLY</button></a>
 							<span>
 								<ul>
 									<li><a href="facebook.com"><img src="img/facebook.png"></a></li>

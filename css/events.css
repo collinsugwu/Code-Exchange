@@ -20,7 +20,7 @@ body{
 }
 .events{
 	width: 100%;
-	background-color: #e4e4e4;
+	background-color: #f4f7fb;
 	padding-top: 25px;
 }
 #header_navbar{
@@ -36,19 +36,22 @@ body{
 }
 .events .thumbnail{
 	width: 495px;
-	height: 220px;
+	
 	margin: 15px;
 	border: 0px;
-	padding: 10px;
+	
 	margin-top: 5px;
 	border-radius: 4px;
+}
+#allevents{
+	padding-left: 10%;
 }
 .L-events button{
 	margin-left: 5%;
 }
 .c-events .thumbnail{
 	width: 300px;
-	margin-left: 10%;
+	margin-left: 18%;
 	border-radius: 5px;
 }
 .navbar-inverse{
@@ -74,4 +77,7 @@ body{
 }
 .c-events ul li{
 	font-weight: bold;
+}
+.home{
+	position: relative;
 }
