@@ -12,7 +12,7 @@
     			$sql = mysql_query("INSERT INTO `teach_apply` (`id`, `teach_id`, `user_email`) VALUES (NULL, '$teach_id', '$current_email')");	
 
     			
-    			header('location:  complain.php');
+    			header('location:  userpage.php');
     		}
     }
 
